@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "rocketToDoList",
+    "slug": "rocketToDoList",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
