@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Keyboard, Pressable, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Logo from './src/Assets/logo-primaria.svg';
 import {TextInput} from './src/Components/TextInput';
@@ -17,20 +17,21 @@ export default function App() {
 
     function handleAddNewTask () {
         setTasks([...tasks, {
-            key: (tasks.length + 1).toString(),
             title: newTask,
             completed: false,
         }])
         setNewTask('');
     }
 
-    function handleCheckboxItem (isChecked, key) {
-        setTasks(tasks.map((task) => {
-            if (task.key === key) {
+    function handleCheckboxItem (isChecked, taskTitle) {
+        let newTasks = tasks.map((task) => {
+            if (task.title === taskTitle) {
                 task.completed = isChecked;
             }
             return task;
-        }));
+        });
+
+        setTasks(newTasks);
     }
 
     function handleDeleteItem (index) {
@@ -43,7 +44,6 @@ export default function App() {
             setIsLoading(false);
         }, 1000)
     }
-
 
     return (
         <View>
